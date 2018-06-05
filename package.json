@@ -1,0 +1,24 @@
+{
+  "name": "WebScraper",
+  "version": "1.0.0",
+  "description": "## Technologies used: * Node.js * Express.js * MongoDB * Mongoose * Handlebars.js * Javascript * jQuery * AJAX/JSON * NPM modules:   * Cheerio * Bootstrap 3 * HTML5 * CSS",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sneha3103/WebScraper.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sneha3103/WebScraper/issues"
+  },
+  "homepage": "https://github.com/sneha3103/WebScraper#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
