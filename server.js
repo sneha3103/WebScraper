@@ -3,6 +3,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
+var expressHandlebars = require("express-handlebars");
 
 //Axios - promise based library. Similar to jquery ajax method
 var axios = require("axios");
@@ -11,22 +12,44 @@ var cheerio = require("cheerio");
 // Require all models
 var db = require("./models");
 
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 
 // Initialize Express
 var app = express();
+
+//Sets up an Express Router
+var router = express.Router();
+
+//Allows request to go through router middleware
+app.use(router);
 
 //Middleware
 
 //Morgan logger is used for logging requests
 app.use(logger("dev"));
 
+//Handlebars
+app.enging("handlebars", expressHandlebars({
+    defaultLayout: "main"
+}));
+
+app.set("view engine", "handlebars");
+
 // Body-parser for handling form submissions
 app.use(bodyParser.urlencoded({ extended: true }));
 // Serving the public folder as a static directory
 app.use(express.static("public"));
 
+var db = process.env.MONGODB_URI || "mongodb://localhost/"
 // Connect to the Mongo Db
+mongoose.connect(db,function(error){
+    if(error) {
+        console.log(error);
+    }
+    else {
+        console.log("mongoose connection made")
+    }
+});
 
 
 // A GET route for scraping the Medium.com website
